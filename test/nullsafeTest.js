@@ -1,6 +1,6 @@
 const chai = require('chai');
-const nullsafe = require('../nullsafe');
-const NullsafeProxy = require('../models/nullsafeProxy');
+const nullsafe = require('../src/nullsafe');
+const NullsafeProxy = require('../src/models/nullsafeProxy');
 const expect = chai.expect;
 
 describe('nullsafe', function() {

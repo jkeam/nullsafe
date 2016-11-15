@@ -1,5 +1,15 @@
 # Nullsafe
+[![npm version](https://badge.fury.io/js/nullsafe.svg)](https://badge.fury.io/js/nullsafe)
+[![Build Status](https://travis-ci.org/jkeam/nullsafe.svg?branch=master)](https://travis-ci.org/jkeam/nullsafe)
+[![Coverage Status](https://coveralls.io/repos/github/jkeam/nullsafe/badge.svg?branch=master)](https://coveralls.io/github/jkeam/nullsafe?branch=master)
+
 A nice way to do a nullsafe traversal of nested objects.
+
+## Node Versions
+  * 7.1.x
+  * 7.0.x
+  * 6.1.x
+  * 6.0.x
 
 ## Motivation
 If you have nested objects and want a way to safely traverse it, nullsafe will help you.  Let's take an example.  Given this object:
