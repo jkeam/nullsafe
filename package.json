@@ -1,6 +1,6 @@
 {
   "name": "nullsafe",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A nullsafe traversal",
   "main": "index.js",
   "scripts": {

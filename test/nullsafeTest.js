@@ -4,6 +4,11 @@ const NullsafeProxy = require('../src/models/nullsafeProxy');
 const expect = chai.expect;
 
 describe('nullsafe', function() {
+  it('can get null attribute', function() {
+    const wrapped = nullsafe(null);
+    expect(wrapped.get('id').value).to.equal(null);
+  });
+
   it('should get value', function() {
     const wrapped = nullsafe({id: 50});
     expect(wrapped.get('id').value).to.equal(50);
@@ -97,5 +102,41 @@ describe('nullsafe', function() {
   it('can chain array with function and gets', function() {
     const wrapped = nullsafe({ids: [1, 2, 3]});
     expect(wrapped.get('ids', 1).call('junk').get('stuff').value).to.equal(null);
+  });
+
+  it('can wrap nullable non null functions', function() {
+    const f = () => 'Hi';
+    const wrapped = nullsafe(f);
+    expect(wrapped.call().value).to.equal('Hi');
+  });
+
+  it('can wrap nullable null functions', function() {
+    const f = null;
+    const wrapped = nullsafe(f);
+    expect(wrapped.call().value).to.equal(null);
+  });
+
+  it('can wrap nullable non null functions and apply', function() {
+    const f = () => 'Hi';
+    const wrapped = nullsafe(f);
+    expect(wrapped.apply().value).to.equal('Hi');
+  });
+
+  it('can wrap nullable null functions and apply', function() {
+    const f = null;
+    const wrapped = nullsafe(f);
+    expect(wrapped.apply().value).to.equal(null);
+  });
+
+  it('can wrap nullable null array', function() {
+    const f = null;
+    const wrapped = nullsafe(f);
+    expect(wrapped.get(2).value).to.equal(null);
+  });
+
+  it('can wrap nullable nonnull array', function() {
+    const f = [100, 200];
+    const wrapped = nullsafe(f);
+    expect(wrapped.get(1).value).to.equal(200);
   });
 });

@@ -16,6 +16,14 @@ module.exports = class NullsafeProxy {
   // args (array): array holding the arguments to pass into the method invocation
   // See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
   apply(methodName, args) {
+    if (methodName == null) {
+      if (!this.isNull) {
+        return new NullsafeProxy(this.target.apply(this.target, args));
+      } else {
+        return new NullsafeProxy(null);
+      }
+    }
+
     if (!this.isNull && this.target[methodName]) {
       return new NullsafeProxy(this.target[methodName].apply(this.target[methodName], args));
     } else {

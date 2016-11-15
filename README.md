@@ -153,3 +153,19 @@ Array dereferencing is also supported.
 To access elements in an array, you just pass as the second argument to `get` the array index that you want to access.
 
 
+## Unnested Objects
+You could also use it to null check non-nested objects as well.
+
+  ```javascript
+  const nullThing = null;
+  const someFunction = () => "hi";
+  const someArray = [100, 200];
+
+  const greeting = nullsafe(someFunction).call().value;  // hi
+  const num = nullsafe(someArray).get(1).value;  // 200
+
+  const nullFunction = nullsafe(nullThing).call().value;  // null
+  const nullArrayAccess = nullsafe(nullThing).get(2).value;  // null
+  const nullObjectAccess = nullsafe(nullThing).get('id').value;  // null
+  ```
+
