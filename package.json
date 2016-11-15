@@ -13,7 +13,7 @@
   ],
   "author": "\"Jon Keam <jpkeam@gmail.com> (http://jonkeam.com)",
   "license": "MIT",
-  "repository": {"type": "git", "https://github.com/jkeam/nullsafe.git"},
+  "repository": {"type": "git", "url": "https://github.com/jkeam/nullsafe.git"},
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.1.2"
