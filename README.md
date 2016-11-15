@@ -16,7 +16,6 @@ If you have nested objects and want a way to safely traverse it, nullsafe will h
 
    ```javascript
    const amusementPark = {
-     "id": 1,
      "mainAttraction": {
         "rollerCoaster": {
           "name": "Grizzly"
@@ -25,7 +24,7 @@ If you have nested objects and want a way to safely traverse it, nullsafe will h
    };
    ```
 
-You would normally have to use a few null checks in order to pull the `name` out of there.
+You would normally have to use a few null checks in order to pull the `name` (Grizzly) out of there.
 
   ```javascript
   let nameOfMainAttraction;
@@ -38,7 +37,7 @@ Alternatively, you could also use lodash
 
   ```javascript
   const _ = require('lodash');
-  const nameOfMainAttraction = _.get(amusementPark, 'amusementPark.mainAttraction.rollerCoaster.name');
+  const nameOfMainAttraction = _.get(amusementPark, 'mainAttraction.rollerCoaster.name');
   ```
 
 But there was something about passing in a string describing how you wanted to access it that felt weird to me.  A wanted an api that allowed me to chain together actual objects as well as a way to support invocation of methods in my chain.
@@ -51,19 +50,30 @@ Given the same example above, this is how you would do it using `nullsafe`.
 
   ```javascript
   const nullsafe = require('nullsafe');
-  const nameOfMainAttraction = nullsafe(amusementPark).get('mainAttraction').get('rollerCoaster').get('name').value;
+  const nameOfMainAttraction = nullsafe(amusementPark)
+                                       .get('mainAttraction')
+                                       .get('rollerCoaster')
+                                       .get('name').value;
   ```
 
 The way it works is simple.  The `nullsafe` method wraps your object in a proxy.  You then call the `get` method to get the attribute you want out.  You keep doing this all the way down the chain until you are done.  Then you call `value` in order to unwrap the object.  If anywhere in the chain failed, you will get a null back when you unwrap it at the end.  Example:
 
   ```javascript
-  const nameOfMainAttraction = nullsafe(amusementPark).get('mainAttraction').get('waterPark').get('name').value;
+  const nameOfMainAttraction = nullsafe(amusementPark)
+                                       .get('mainAttraction')
+                                       .get('waterPark')
+                                       .get('name').value;
   ```
 
 Our amusement park has no water park, but the traversal will not fail and will return a null at the end.  This works no matter how long the chain:
 
   ```javascript
-  const nameOfMainAttraction = nullsafe(amusementPark).get('mainAttraction').get('waterPark').get('slide').get('height').get('otherStuffThatDoesntExist').value;
+  const nameOfMainAttraction = nullsafe(amusementPark)
+                                       .get('mainAttraction')
+                                       .get('waterPark')
+                                       .get('slide')
+                                       .get('height')
+                                       .get('otherStuffThatDoesntExist').value;
   ```
 
 
@@ -81,6 +91,7 @@ Our amusement park has no water park, but the traversal will not fail and will r
   };
 
   const supervisorName = nullsafe(amusementPark).call('getSupervisorInfo').get('name').value;
+  // Billy
   ```
 
 Notice the `call` method that will invoke the `getSupervisorInfo` method.  Call then wraps the results in a proxy object that we can then chain against.  You could of course chain `get` or `call` for as long as you want.
@@ -98,8 +109,8 @@ We could also pass in parameters:
   };
 
   const math = nullsafe(mathFunctions);
-  const sum = math.call('addTwo', 5).value;  //7
-  const product = math.call('multiplyTogether', 10, 4).value;  //40
+  const sum = math.call('addTwo', 5).value;  // 7
+  const product = math.call('multiplyTogether', 10, 4).value;  // 40
   ```
 
 Or if you prefer apply over call, which is basically the same thing except that the arguments are all passed in a single array:
@@ -115,8 +126,8 @@ Or if you prefer apply over call, which is basically the same thing except that 
   };
 
   const math = nullsafe(mathFunctions);
-  const sum = math.apply('addTwo', [5]).value;  //7
-  const product = math.apply('multiplyTogether', [10, 4]).value;  //40
+  const sum = math.apply('addTwo', [5]).value;  // 7
+  const product = math.apply('multiplyTogether', [10, 4]).value;  // 40
   ```
 
 
@@ -135,8 +146,8 @@ Array dereferencing is also supported.
     ]
   };
 
-  const firstStudentName = nullsafe(school).get('students', 0).get('name').value;  //Jane
-  const bogusStudentName = nullsafe(school).get('students', 100).get('name').value;  //null
+  const firstStudentName = nullsafe(school).get('students', 0).get('name').value;  // Jane
+  const bogusStudentName = nullsafe(school).get('students', 100).get('name').value;  // null
   ```
 
 To access elements in an array, you just pass as the second argument to `get` the array index that you want to access.
