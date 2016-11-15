@@ -78,4 +78,24 @@ describe('nullsafe', function() {
     const wrapped = nullsafe({getName: () => 'Jon'});
     expect(wrapped.get('getName').call('junk').get('stuff').value).to.equal(null);
   });
+
+  it('can get array', function() {
+    const wrapped = nullsafe({ids: [1, 2, 3]});
+    expect(wrapped.get('ids', 1).value).to.equal(2);
+  });
+
+  it('can chain array', function() {
+    const wrapped = nullsafe({ids: [1, 2, 3]});
+    expect(wrapped.get('ids', 1).get('junk').value).to.equal(null);
+  });
+
+  it('can chain array with functions', function() {
+    const wrapped = nullsafe({ids: [1, 2, 3]});
+    expect(wrapped.get('ids', 1).call('junk').value).to.equal(null);
+  });
+
+  it('can chain array with function and gets', function() {
+    const wrapped = nullsafe({ids: [1, 2, 3]});
+    expect(wrapped.get('ids', 1).call('junk').get('stuff').value).to.equal(null);
+  });
 });
