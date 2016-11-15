@@ -1,2 +1,1 @@
-const nullsafe = require('./src/nullsafe');
-exports = nullsafe;
+module.exports = require('./src/nullsafe');

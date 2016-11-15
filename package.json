@@ -1,6 +1,6 @@
 {
   "name": "nullsafe",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A nullsafe traversal",
   "main": "index.js",
   "scripts": {
@@ -24,5 +24,8 @@
     "istanbul": "^0.4.5",
     "mocha": "^3.1.2",
     "mocha-lcov-reporter": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=6.0.0"
   }
 }
