@@ -28,7 +28,7 @@ You would normally have to use a few null checks in order to pull the `name` (Gr
 
   ```javascript
   let nameOfMainAttraction;
-  if (!!amusementPark && !!amusementPark.mainAttraction && !!amusementPark.mainAttraction.rollerCoaster) {
+  if (amusementPark && amusementPark.mainAttraction && amusementPark.mainAttraction.rollerCoaster) {
     nameOfMainAttraction = amusementPark.mainAttraction.rollerCoaster.name;
   }
   ```
