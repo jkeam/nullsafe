@@ -40,7 +40,7 @@ Alternatively, you could also use lodash
   const nameOfMainAttraction = _.get(amusementPark, 'mainAttraction.rollerCoaster.name');
   ```
 
-But there was something about passing in a string describing how you wanted to access it that felt weird to me.  A wanted an api that allowed me to chain together actual objects as well as a way to support invocation of methods in my chain.
+But there was something about passing in a string describing how you wanted to access it that felt weird to me.  I wanted an api that allowed me to chain together actual objects as well as a way to support invocation of methods in my chain.
 
 
 ## Usage
