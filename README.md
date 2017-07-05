@@ -6,8 +6,7 @@
 A nice way to do a nullsafe traversal of nested objects.
 
 ## Node Versions
-  * 7.1.x
-  * 7.0.x
+  * 7.7.x
   * 6.1.x
   * 6.0.x
 
