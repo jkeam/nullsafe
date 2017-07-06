@@ -54,7 +54,7 @@ Include the library and wrap your object.
                       .get('address')  // does not exist
                       .get('zip');     // does not exist
 
-  const exists = zip.isNull();    // false
+  const isNull = zip.isNull();     // true
   const value  = zip.value;        // null
   ```
 
