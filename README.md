@@ -39,13 +39,30 @@ Alternatively, you could also use lodash
   const nameOfMainAttraction = _.get(amusementPark, 'mainAttraction.rollerCoaster.name');
   ```
 
-But there was something about passing in a string describing how you wanted to access it that felt weird to me.  I wanted an api that allowed me to chain together actual objects as well as a way to support invocation of methods in my chain.
+But I wanted to be able to pass around optional objects, objects that could either contain a value or not.  And I wanted these special optional objects to be safe against anything I invoked against it.
 
 
-## Usage
+# Usage
+Include the library and wrap your object.
+
+  ```javascript
+  const nullsafe = require('nullsafe');
+  const person = {
+    name: 'Jon'
+  };
+  const zip = nullsafe(person)
+                      .get('address')  // does not exist
+                      .get('zip');     // does not exist
+
+  const exists = zip.isNull();    // false
+  const value  = zip.value;        // null
+  ```
+
+
+## Api
 
 ### Objects
-Given the same example above, this is how you would do it using `nullsafe`.
+The most common use case are objects.
 
   ```javascript
   const nullsafe = require('nullsafe');
@@ -167,4 +184,3 @@ You could also use it to null check non-nested objects as well.
   const nullArrayAccess = nullsafe(nullThing).get(2).value;  // null
   const nullObjectAccess = nullsafe(nullThing).get('id').value;  // null
   ```
-

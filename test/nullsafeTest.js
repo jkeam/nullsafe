@@ -139,4 +139,25 @@ describe('nullsafe', function() {
     const wrapped = nullsafe(f);
     expect(wrapped.get(1).value).to.equal(200);
   });
+
+  it('can indicate if object is null', function() {
+    const wrapped = nullsafe(null);
+    expect(wrapped.isNull()).to.equal(true);
+  });
+
+  it('can indicate if nested object is null', function() {
+    const wrapped = nullsafe({person: null});
+    // there is no name
+    expect(wrapped.get('person').get('name').isNull()).to.equal(true);
+  });
+
+  it('can indicate if object is not null', function() {
+    const wrapped = nullsafe(1);
+    expect(wrapped.isNull()).to.equal(false);
+  });
+
+  it('can indicate if nested object is not null', function() {
+    const wrapped = nullsafe({person: {name: 'bob'}});
+    expect(wrapped.get('person').isNull()).to.equal(false);
+  });
 });
