@@ -19,11 +19,11 @@
     "url": "https://github.com/jkeam/nullsafe.git"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "coveralls": "^2.11.15",
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.1",
     "istanbul": "^0.4.5",
-    "mocha": "^3.1.2",
-    "mocha-lcov-reporter": "^1.2.0"
+    "mocha": "^5.2.0",
+    "mocha-lcov-reporter": "^1.3.0"
   },
   "engines": {
     "node": ">=6.0.0"
