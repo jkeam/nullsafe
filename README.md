@@ -107,7 +107,7 @@ We don't have a doggy yet, but the traversal will not fail and will return a nul
     }
   };
 
-  const supervisorName = nullsafe(pet).call('getSupervisorInfo').get('name').value;
+  const supervisorName = nullsafe(kennel).call('getSupervisorInfo').get('name').value;
   // Billy
   ```
 
