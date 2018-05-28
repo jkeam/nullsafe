@@ -1,11 +1,16 @@
 module.exports = class NullsafeProxy {
   // Constructor to store the target (real) object.
   // target (Object): the real object
-  constructor(target) {
-    this.target = target;
+  // path (Array): optional path, used to immediate traverse the path
+  constructor(target, path) {
+    if (path) {
+      this.target = this._traversePath(target, path);
+    } else {
+      this.target = target;
+    }
     // Rely on loose equality with null in order to capture both null and undefined values
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness
-    this.isNullValue = (target == null);
+    this.isNullValue = (this.target == null);
   }
 
   // Extracts the possibly null value.
@@ -64,5 +69,17 @@ module.exports = class NullsafeProxy {
   // Helper method to extract arguments passed into the call method
   _extractArgs(args) {
     return (args.length === 1 ? [args[0]] : Array.apply(null, args)).slice(1);
+  }
+
+  // Helper function to walk the path for this object
+  _traversePath(obj, path) {
+    let cur = obj;
+    for (let i = 0; i < path.length; i++) {
+      cur = cur[path[i]];
+      if (!cur) {
+        i = path.length;
+      }
+    }
+    return cur;
   }
 }

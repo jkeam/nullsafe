@@ -160,4 +160,10 @@ describe('nullsafe', function() {
     const wrapped = nullsafe({person: {name: 'bob'}});
     expect(wrapped.get('person').isNull()).to.equal(false);
   });
+
+  it('can immediately traverse path', function() {
+    const obj = {person: {name: 'bob'}};
+    const wrapped = nullsafe(obj, ['person', 'name']);
+    expect(wrapped.value).to.equal('bob');
+  });
 });

@@ -63,8 +63,22 @@ Include the library and wrap your object.
 
 ## Api
 
+### Immediately Resolve
+If you have an object, and want to immediately evaluate some path, you can.  For example:
+
+  ```javascript
+  const nullsafe = require('nullsafe');
+  const nullableName = nullsafe(pet, ['biggest', 'kitty', 'name']);
+  const name = nullableName.value;
+  # or just this
+  #   const name = nullsafe(pet, ['biggest', 'kitty', 'name']).value;
+  ```
+
+The advantage of immediately resolving the path is that no intermediate objects are created.  In this example above, no proxy objects are created for biggest and kitty.
+
+
 ### Objects
-The most common use case are objects.
+The most common use case is for passing around objects that could be null.
 
   ```javascript
   const nullsafe = require('nullsafe');
