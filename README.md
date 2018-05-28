@@ -70,8 +70,8 @@ If you have an object, and want to immediately evaluate some path, you can.  For
   const nullsafe = require('nullsafe');
   const nullableName = nullsafe(pet, ['biggest', 'kitty', 'name']);
   const name = nullableName.value;
-  # or just this
-  #   const name = nullsafe(pet, ['biggest', 'kitty', 'name']).value;
+  // or just this
+  //   const name = nullsafe(pet, ['biggest', 'kitty', 'name']).value;
   ```
 
 The advantage of immediately resolving the path is that no intermediate objects are created.  In this example above, no proxy objects are created for biggest and kitty.
