@@ -74,7 +74,7 @@ If you have an object, and want to immediately evaluate some path, you can.  For
   //   const name = nullsafe(pet, ['biggest', 'kitty', 'name']).value;
   ```
 
-The advantage of immediately resolving the path is that no intermediate objects are created.  In this example above, no proxy objects are created for biggest and kitty.
+The advantage of immediately resolving the path is that no intermediate objects are created.  In this example above, no proxy objects are created for pet, biggest, or kitty; only the final attribute `name` is wrapped.
 
 
 ### Objects
