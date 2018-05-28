@@ -5,30 +5,32 @@
 
 A nice way to do a nullsafe traversal of nested objects.
 
-## Node Versions
-  * 7.7.x
-  * 6.1.x
-  * 6.0.x
+## Supported Node Versions
+  * 10
+  * 9
+  * 8
+  * 7
+  * 6
 
 ## Motivation
 If you have nested objects and want a way to safely traverse it, nullsafe will help you.  Let's take an example.  Given this object:
 
    ```javascript
-   const amusementPark = {
-     "mainAttraction": {
-        "rollerCoaster": {
-          "name": "Grizzly"
+   const pet = {
+     "biggest": {
+        "kitty": {
+          "name": "Missy"
         }
      }
    };
    ```
 
-You would normally have to use a few null checks in order to pull the `name` (Grizzly) out of there.
+You would normally have to use a few null checks in order to pull the `name` (Missy) out of there.
 
   ```javascript
-  let nameOfMainAttraction;
-  if (amusementPark && amusementPark.mainAttraction && amusementPark.mainAttraction.rollerCoaster) {
-    nameOfMainAttraction = amusementPark.mainAttraction.rollerCoaster.name;
+  let name;
+  if (pet && pet.biggest && pet.biggest.kitty) {
+    name = pet.biggest.kitty.name;
   }
   ```
 
@@ -36,7 +38,7 @@ Alternatively, you could also use lodash
 
   ```javascript
   const _ = require('lodash');
-  const nameOfMainAttraction = _.get(amusementPark, 'mainAttraction.rollerCoaster.name');
+  const name = _.get(pet, 'biggest.kitty.name');
   ```
 
 But I wanted to be able to pass around optional objects, objects that could either contain a value or not.  And I wanted these special optional objects to be safe against anything I invoked against it.
@@ -66,29 +68,28 @@ The most common use case are objects.
 
   ```javascript
   const nullsafe = require('nullsafe');
-  const nameOfMainAttraction = nullsafe(amusementPark)
-                                       .get('mainAttraction')
-                                       .get('rollerCoaster')
-                                       .get('name').value;
+  const name = nullsafe(pet)
+                       .get('biggest')
+                       .get('kitty')
+                       .get('name').value;
   ```
 
 The way it works is simple.  The `nullsafe` method wraps your object in a proxy.  You then call the `get` method to get the attribute you want out.  You keep doing this all the way down the chain until you are done.  Then you call `value` in order to unwrap the object.  If anywhere in the chain failed, you will get a null back when you unwrap it at the end.  Example:
 
   ```javascript
-  const nameOfMainAttraction = nullsafe(amusementPark)
-                                       .get('mainAttraction')
-                                       .get('waterPark')
-                                       .get('name').value;
+  const let = nullsafe(pet)
+                      .get('biggest')
+                      .get('doggy')
+                      .get('name').value;
   ```
 
-Our amusement park has no water park, but the traversal will not fail and will return a null at the end.  This works no matter how long the chain:
+We don't have a doggy yet, but the traversal will not fail and will return a null at the end.  This works no matter how long the chain:
 
   ```javascript
-  const nameOfMainAttraction = nullsafe(amusementPark)
-                                       .get('mainAttraction')
-                                       .get('waterPark')
-                                       .get('slide')
-                                       .get('height')
+  const nameOfMainAttraction = nullsafe(pet)
+                                       .get('biggest')
+                                       .get('parrot')
+                                       .get('name')
                                        .get('otherStuffThatDoesntExist').value;
   ```
 
@@ -97,7 +98,7 @@ Our amusement park has no water park, but the traversal will not fail and will r
 `nullsafe` also supports function calls in the chain.
 
   ```javascript
-  const amusementPark = {
+  const kennel = {
     "getSupervisorInfo": () => {
       return {
         "name": "Billy",
@@ -106,7 +107,7 @@ Our amusement park has no water park, but the traversal will not fail and will r
     }
   };
 
-  const supervisorName = nullsafe(amusementPark).call('getSupervisorInfo').get('name').value;
+  const supervisorName = nullsafe(pet).call('getSupervisorInfo').get('name').value;
   // Billy
   ```
 
