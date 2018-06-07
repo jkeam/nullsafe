@@ -172,4 +172,16 @@ describe('nullsafe', function() {
     const wrapped = nullsafe(obj, ['person', 'age']);
     expect(wrapped.value).to.equal(null);
   });
+
+  it('can get value and it is null even if its undefined', function() {
+    expect(nullsafe(undefined).value).to.equal(null);
+    expect(nullsafe(null).value).to.equal(null);
+    expect(nullsafe('cat').value).to.equal('cat');
+  })
+
+  it('can get raw value', function() {
+    expect(nullsafe(undefined).rawValue).to.equal(undefined);
+    expect(nullsafe(null).rawValue).to.equal(null);
+    expect(nullsafe('cat').rawValue).to.equal('cat');
+  })
 });
