@@ -10,7 +10,8 @@
   "keywords": [
     "null",
     "nullsafe",
-    "javascript"
+    "javascript",
+    "optional"
   ],
   "author": "\"Jon Keam <jpkeam@gmail.com> (http://jonkeam.com)",
   "license": "MIT",

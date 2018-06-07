@@ -166,4 +166,10 @@ describe('nullsafe', function() {
     const wrapped = nullsafe(obj, ['person', 'name']);
     expect(wrapped.value).to.equal('bob');
   });
+
+  it('can immediately traverse a bad path', function() {
+    const obj = {person: {name: 'bob'}};
+    const wrapped = nullsafe(obj, ['person', 'age']);
+    expect(wrapped.value).to.equal(null);
+  });
 });

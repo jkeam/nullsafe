@@ -95,6 +95,7 @@ module.exports = class NullsafeProxy {
     for (let i = 0; i < path.length; i++) {
       cur = cur[path[i]];
       if (!cur) {
+        cur = null;
         i = path.length;
       }
     }
