@@ -70,6 +70,7 @@ If you have an object, and want to immediately evaluate some path, you can.  For
   const nullsafe = require('nullsafe');
   const nullableName = nullsafe(pet, ['biggest', 'kitty', 'name']);
   const name = nullableName.value;
+
   // or just this
   //   const name = nullsafe(pet, ['biggest', 'kitty', 'name']).value;
   ```
