@@ -43,6 +43,8 @@ Alternatively, you could also use lodash
 
 But I wanted to be able to pass around optional objects, objects that could either contain a value or not.  And I wanted these special optional objects to be safe against anything I invoked against it.
 
+Lastly, I didn't want to care about the differences between `null` and `undefined`.  This library will treat the two as the same and always return `null` when the target (thing being wrapped) is either a `null` or `undefined`.
+
 
 # Usage
 Include the library and wrap your object.
@@ -199,6 +201,21 @@ You could also use it to null check non-nested objects as well.
   const nullFunction = nullsafe(nullThing).call().value;  // null
   const nullArrayAccess = nullsafe(nullThing).get(2).value;  // null
   const nullObjectAccess = nullsafe(nullThing).get('id').value;  // null
+  ```
+
+## Raw Value
+In the rare cases you care if the value that is wrapped is an actual `undefined` vs `null` value, you can get that by calling `rawValue`.
+
+  ```javascript
+  // rawValue
+  const undefinedThing = nullsafe(undefined).rawValue; // undefined
+  const nullThing = nullsafe(null).rawValue; // null
+  const name = nullsafe('jon').rawValue; // jon
+
+  // value
+  const undefinedThing2 = nullsafe(undefined).value; // null
+  const nullThing2 = nullsafe(null).value; // null
+  const name2 = nullsafe('jon').value; // jon
   ```
 
 ## Performance

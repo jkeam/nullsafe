@@ -16,13 +16,22 @@ module.exports = class NullsafeProxy {
     this.isNullValue = (this.target == null);
   }
 
-  // Extracts the possibly null value.
+  /**
+   * Gets the raw value/target being wrapped.
+   * If the value is set, then this is no different than value.
+   * This is only valuable if you care if you wrapped an undefined vs an actual null value.
+   * @return {Object} the raw target that was wrapped
+   */
+  get rawValue() {
+    return this.target;
+  }
+
   /**
    * Gets the value/target being wrapped
    * @return {Object} the target that was wrapped
    */
   get value() {
-    return this.target;
+    return (this.isNullValue) ? null : this.target;
   }
 
   /**
@@ -95,7 +104,6 @@ module.exports = class NullsafeProxy {
     for (let i = 0; i < path.length; i++) {
       cur = cur[path[i]];
       if (!cur) {
-        cur = null;
         i = path.length;
       }
     }
