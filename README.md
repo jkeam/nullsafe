@@ -6,6 +6,7 @@
 A nice way to do a nullsafe traversal of nested objects.
 
 ## Supported Node Versions
+  * 11
   * 10
   * 9
   * 8

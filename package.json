@@ -1,6 +1,6 @@
 {
   "name": "nullsafe",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A nullsafe traversal",
   "main": "index.js",
   "scripts": {
@@ -20,8 +20,8 @@
     "url": "https://github.com/jkeam/nullsafe.git"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
-    "coveralls": "^3.0.1",
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.3",
     "istanbul": "^0.4.5",
     "jsdoc": "^3.5.5",
     "mocha": "^5.2.0",
