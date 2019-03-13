@@ -231,7 +231,7 @@ Run on:
 Comparing:
 1.  Lodash v4.17.11
 2.  Ramda v0.26.1
-3.  Nullsafe v2.0.1
+3.  Nullsafe v2.0.2
 
 Run 1
 
