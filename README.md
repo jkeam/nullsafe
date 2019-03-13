@@ -229,53 +229,53 @@ Run on:
 * Memory 16 GB 2133 MHz LPDDR3
 
 Comparing:
-1.  Lodash v4.17.10
-2.  Ramda v0.25.0
-3.  Nullsafe v1.1.0
+1.  Lodash v4.17.11
+2.  Ramda v0.26.1
+3.  Nullsafe v2.0.1
 
 Run 1
 
 ```
-Lodash#get x 4,441,751 ops/sec ±1.81% (86 runs sampled)
-Ramda#path x 20,833,571 ops/sec ±0.99% (88 runs sampled)
-Nullsafe#value x 20,645,980 ops/sec ±1.57% (88 runs sampled)
-Nullsafe#rawValue x 21,255,783 ops/sec ±0.44% (87 runs sampled)
-Fastest is Nullsafe#rawValue,Nullsafe#value
+Lodash#get x 3,352,635 ops/sec ±3.80% (79 runs sampled)
+Ramda#path x 16,985,122 ops/sec ±2.32% (84 runs sampled)
+Nullsafe#value x 17,435,296 ops/sec ±1.96% (76 runs sampled)
+Nullsafe#rawValue x 17,489,960 ops/sec ±1.37% (88 runs sampled)
+Fastest is Nullsafe#rawValue,Nullsafe#value,Ramda#path
 ```
 
 Run 2
 
 ```
-Lodash#get x 4,682,527 ops/sec ±0.62% (87 runs sampled)
-Ramda#path x 21,520,063 ops/sec ±0.38% (90 runs sampled)
-Nullsafe#value x 21,259,640 ops/sec ±0.47% (87 runs sampled)
-Nullsafe#rawValue x 21,387,415 ops/sec ±0.42% (88 runs sampled)
-Fastest is Ramda#path,Nullsafe#rawValue
+Lodash#get x 3,807,708 ops/sec ±2.22% (84 runs sampled)
+Ramda#path x 18,124,155 ops/sec ±1.67% (89 runs sampled)
+Nullsafe#value x 17,382,109 ops/sec ±1.51% (83 runs sampled)
+Nullsafe#rawValue x 17,557,116 ops/sec ±1.26% (86 runs sampled)
+Fastest is Ramda#path
 ```
 
 Run 3
 ```
-Lodash#get x 4,874,402 ops/sec ±0.50% (90 runs sampled)
-Ramda#path x 22,170,331 ops/sec ±0.99% (90 runs sampled)
-Nullsafe#value x 22,024,121 ops/sec ±0.30% (94 runs sampled)
-Nullsafe#rawValue x 21,847,978 ops/sec ±0.45% (91 runs sampled)
-Fastest is Nullsafe#value
+Lodash#get x 3,856,657 ops/sec ±1.90% (86 runs sampled)
+Ramda#path x 17,466,883 ops/sec ±2.48% (86 runs sampled)
+Nullsafe#value x 17,630,377 ops/sec ±1.03% (89 runs sampled)
+Nullsafe#rawValue x 17,630,998 ops/sec ±1.07% (89 runs sampled)
+Fastest is Nullsafe#value,Nullsafe#rawValue,Ramda#path
 ```
 
 Run 4
 ```
-Lodash#get x 4,742,099 ops/sec ±1.35% (89 runs sampled)
-Ramda#path x 20,826,201 ops/sec ±0.87% (87 runs sampled)
-Nullsafe#value x 21,104,319 ops/sec ±0.46% (91 runs sampled)
-Nullsafe#rawValue x 21,083,639 ops/sec ±0.59% (87 runs sampled)
-Fastest is Nullsafe#value,Nullsafe#rawValue,Ramda#path
+Lodash#get x 3,864,329 ops/sec ±2.37% (77 runs sampled)
+Ramda#path x 18,743,263 ops/sec ±1.83% (80 runs sampled)
+Nullsafe#value x 17,284,128 ops/sec ±1.59% (86 runs sampled)
+Nullsafe#rawValue x 17,538,949 ops/sec ±1.36% (89 runs sampled)
+Fastest is Ramda#path
 ```
 
 Run 5
 ```
-Lodash#get x 4,493,394 ops/sec ±1.40% (87 runs sampled)
-Ramda#path x 20,715,977 ops/sec ±1.12% (88 runs sampled)
-Nullsafe#value x 20,703,644 ops/sec ±1.23% (85 runs sampled)
-Nullsafe#rawValue x 20,277,368 ops/sec ±1.89% (86 runs sampled)
-Fastest is Ramda#path,Nullsafe#value,Nullsafe#rawValue
+Lodash#get x 4,136,289 ops/sec ±1.94% (81 runs sampled)
+Ramda#path x 18,449,161 ops/sec ±1.07% (86 runs sampled)
+Nullsafe#value x 17,517,517 ops/sec ±1.33% (84 runs sampled)
+Nullsafe#rawValue x 17,648,284 ops/sec ±1.35% (87 runs sampled)
+Fastest is Ramda#path
 ```
